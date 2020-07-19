@@ -25,7 +25,7 @@ void changeSize(int w,int h) {
     glViewport(0, 0, w, h);
 }
 
-void RenderScene(void) {
+void renderScene(void) {
     //1.清除一个或者一组特定的缓存区
     /*
      缓冲区是一块存在图像信息的储存空间，红色、绿色、蓝色和alpha分量通常一起分量通常一起作为颜色缓存区或像素缓存区引用。
@@ -99,7 +99,7 @@ int main(int argc,char *argv[]) {
     glutReshapeFunc(changeSize);
     
     // 注册显示函数，当需要重新绘制的时候，会调用
-    glutDisplayFunc(RenderScene);
+    glutDisplayFunc(renderScene);
 
     /*
      初始化一个GLEW库,确保OpenGL API对程序完全可用。
