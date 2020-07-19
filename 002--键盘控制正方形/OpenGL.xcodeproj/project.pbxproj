@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D6BCA4081F2E36AD00B91743 /* 01OpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01OpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6BCA4081F2E36AD00B91743 /* OpenGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BCA4141F2E36AD00B91743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6BCA4171F2E36AD00B91743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6BCA4191F2E36AD00B91743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		D6BCA3FF1F2E36AD00B91743 = {
 			isa = PBXGroup;
 			children = (
-				D6BCA40A1F2E36AD00B91743 /* 01OpenGL */,
+				D6BCA40A1F2E36AD00B91743 /* OpenGL */,
 				D6BCA4091F2E36AD00B91743 /* Products */,
 				D6BCA41F1F2E36B900B91743 /* Frameworks */,
 			);
@@ -66,12 +66,12 @@
 		D6BCA4091F2E36AD00B91743 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6BCA4081F2E36AD00B91743 /* 01OpenGL.app */,
+				D6BCA4081F2E36AD00B91743 /* OpenGL.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6BCA40A1F2E36AD00B91743 /* 01OpenGL */ = {
+		D6BCA40A1F2E36AD00B91743 /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
 				D6BCA4281F2E379D00B91743 /* include */,
@@ -81,7 +81,7 @@
 				D6BCA40E1F2E36AD00B91743 /* Supporting Files */,
 				D6BCA4261F2E375100B91743 /* main.cpp */,
 			);
-			path = 01OpenGL;
+			path = OpenGL;
 			sourceTree = "<group>";
 		};
 		D6BCA40E1F2E36AD00B91743 /* Supporting Files */ = {
@@ -133,9 +133,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D6BCA4071F2E36AD00B91743 /* 01OpenGL */ = {
+		D6BCA4071F2E36AD00B91743 /* OpenGL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6BCA41C1F2E36AD00B91743 /* Build configuration list for PBXNativeTarget "01OpenGL" */;
+			buildConfigurationList = D6BCA41C1F2E36AD00B91743 /* Build configuration list for PBXNativeTarget "OpenGL" */;
 			buildPhases = (
 				D6BCA4041F2E36AD00B91743 /* Sources */,
 				D6BCA4051F2E36AD00B91743 /* Frameworks */,
@@ -145,9 +145,9 @@
 			);
 			dependencies = (
 			);
-			name = 01OpenGL;
+			name = OpenGL;
 			productName = 01OpenGL;
-			productReference = D6BCA4081F2E36AD00B91743 /* 01OpenGL.app */;
+			productReference = D6BCA4081F2E36AD00B91743 /* OpenGL.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -165,7 +165,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D6BCA4031F2E36AD00B91743 /* Build configuration list for PBXProject "01OpenGL" */;
+			buildConfigurationList = D6BCA4031F2E36AD00B91743 /* Build configuration list for PBXProject "OpenGL" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -179,7 +179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D6BCA4071F2E36AD00B91743 /* 01OpenGL */,
+				D6BCA4071F2E36AD00B91743 /* OpenGL */,
 			);
 		};
 /* End PBXProject section */
@@ -314,7 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				INFOPLIST_FILE = 01OpenGL/Info.plist;
+				INFOPLIST_FILE = OpenGL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -331,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				INFOPLIST_FILE = 01OpenGL/Info.plist;
+				INFOPLIST_FILE = OpenGL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -345,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6BCA4031F2E36AD00B91743 /* Build configuration list for PBXProject "01OpenGL" */ = {
+		D6BCA4031F2E36AD00B91743 /* Build configuration list for PBXProject "OpenGL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCA41A1F2E36AD00B91743 /* Debug */,
@@ -354,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6BCA41C1F2E36AD00B91743 /* Build configuration list for PBXNativeTarget "01OpenGL" */ = {
+		D6BCA41C1F2E36AD00B91743 /* Build configuration list for PBXNativeTarget "OpenGL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6BCA41D1F2E36AD00B91743 /* Debug */,
