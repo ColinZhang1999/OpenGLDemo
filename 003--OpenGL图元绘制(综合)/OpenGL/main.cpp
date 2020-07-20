@@ -13,11 +13,12 @@ GLGeometryTransform    transformPipeline;
 
 // 矩阵堆栈，用于设置投影矩阵
 GLMatrixStack          projectionMatrix;
-// 投影矩阵
-GLFrustum              viewFrustum;
 
 // 矩阵堆栈，用于设置视图矩阵，模型矩阵，
 GLMatrixStack          modelViewMatrix;
+
+// 投影矩阵
+GLFrustum              viewFrustum;
 
 // 参考帧，用于生成视图变换矩阵，用于调整观察者的位置
 // （通过moveForward调整观察者在z轴移动，默认的朝向是-z轴，所以向屏幕里面移动传正数值，向屏幕外即+z轴，需要传负数值）
@@ -51,9 +52,6 @@ void changeSize(int w,int h) {
     viewFrustum.SetPerspective(35.0f, float(w) / float(h), 1.0f, 500.0f);
     // 重新加载投影矩阵到矩阵堆栈projectionMatrix
     projectionMatrix.LoadMatrix(viewFrustum.GetProjectionMatrix());
-    
-    // 调用顶部载入单元矩阵
-    modelViewMatrix.LoadIdentity();
 }
 
 //特殊键位处理（上、下、左、右移动）
@@ -145,7 +143,9 @@ void drawWireFramedBatch(GLBatch* pBatch) {
 void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT|GL_STENCIL_BUFFER_BIT);
     
-    //压栈
+    // 调用顶部载入单元矩阵
+    modelViewMatrix.LoadIdentity();
+    
     modelViewMatrix.PushMatrix();
     M3DMatrix44f mCamera;
     cameraFrame.GetCameraMatrix(mCamera);
