@@ -31,6 +31,11 @@ GLTriangleBatch        torusBatch;
 // 小球
 GLTriangleBatch        sphereBatch;
 
+// 随机球个数
+#define NUM_SPHERES 50
+// 记录随机球位置
+GLFrame spheres[NUM_SPHERES];
+
 
 // 绿色
 GLfloat vGreen[] = { 0.0f, 1.0f, 0.0f, 1.0f };
@@ -99,18 +104,34 @@ void renderScene(void) {
     shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), vGreen);
     floorBatch.Draw();
     
-    // 绘制大球
+    // 平移（z轴）让小球显示到观察者前面，
+    modelViewMatrix.Translate(0.0f, 0.0f, -3.0f);
+
     // 1. 获取光源位置
     M3DVector4f vLightPos = {0.0f,10.0f,5.0f,1.0f};
-    // 平移
-    modelViewMatrix.Translate(0.0f, 0.0f, -4.0f);
+    
+    // 小球
+    for (int i = 0; i < NUM_SPHERES; i++) {
+        modelViewMatrix.PushMatrix();
+        modelViewMatrix.MultMatrix(spheres[i]);
+        shaderManager.UseStockShader(
+                                     GLT_SHADER_POINT_LIGHT_DIFF,
+                                     transformPipeline.GetModelViewMatrix(),
+                                     transformPipeline.GetProjectionMatrix(),
+                                     vLightPos,
+                                     vBlue);
+        sphereBatch.Draw();
+        modelViewMatrix.PopMatrix();
+    }
+    
+    // 绘制大球
     // 旋转
     modelViewMatrix.PushMatrix();
     modelViewMatrix.Rotate(yRot, 0.0f, 1.0f, 0.0f);
     
     // 划线
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glLineWidth(2.5f);
+    glLineWidth(1.5f);
     
     // 8.指定合适的着色器(点光源着色器)
     shaderManager.UseStockShader(
@@ -123,17 +144,21 @@ void renderScene(void) {
     modelViewMatrix.PopMatrix();
     
     
-    // 小球
+    // 小球（先旋转再平移，顺序不能变）
     glLineWidth(2.0f);
-    modelViewMatrix.Rotate(yRot * -2.0f, 0.0f, 1.0f, 0.0f);
+    
+    // 公转
+    modelViewMatrix.Rotate(yRot * -1.0f, 0.0f, 1.0f, 0.0f);
+    // 公转半径
     modelViewMatrix.Translate(0.8f, 0.0f, 0.0f);
+    
     shaderManager.UseStockShader(GLT_SHADER_POINT_LIGHT_DIFF,transformPipeline.GetModelViewMatrix(),transformPipeline.GetProjectionMatrix(),vLightPos, vBlue);
     sphereBatch.Draw();
        
     modelViewMatrix.PopMatrix();
     modelViewMatrix.PopMatrix();
-    
-    
+    modelViewMatrix.PopMatrix();
+        
     glDisable(GL_DEPTH_TEST);
     
     // 进行缓冲区交换
@@ -162,12 +187,21 @@ void setupRC() {
     floorBatch.End();
     
     // 4.设置大球模型
-    // gltMakeSphere(torusBatch, 0.4f, 40, 80);
     gltMakeSphere(torusBatch, 0.4f, 20, 40);
     
     // 5. 设置小球球模型
-    gltMakeSphere(sphereBatch, 0.2f, 8, 16);
+    gltMakeSphere(sphereBatch, 0.2f, 12, 24);
     
+    //6. 随机位置放置小球球
+    for (int i = 0; i < NUM_SPHERES; i++) {
+        //y轴不变，X,Z产生随机值
+        GLfloat x = ((GLfloat)((rand() % 400) - 200 ) * 0.1f);
+        GLfloat z = ((GLfloat)((rand() % 400) - 200 ) * 0.1f);
+        
+        //在y方向，将球体设置为0.0的位置，这使得它们看起来是飘浮在眼睛的高度
+        //对spheres数组中的每一个顶点，设置顶点数据
+        spheres[i].SetOrigin(x, 0.0f, z);
+    }
 }
 
 int main(int argc,char *argv[]) {
